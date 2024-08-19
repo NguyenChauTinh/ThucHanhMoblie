@@ -18,6 +18,7 @@ const checkWinner = (avgDolphins, avgKoalas) => {
     }
 }
 
+
 console.log('Times 1:');
 
 checkWinner(avgDolphins, avgKoalas);
