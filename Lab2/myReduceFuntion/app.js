@@ -1,37 +1,43 @@
 // Array funtions
 
-// forEach() funtions
+// reduce() funtions
 
 const sports = [
     {
         name: 'Bóng rổ',
-        like: 6
+        like: 6,
+        coin: 100
     },
     {
         name: 'Bơi lội',
-        like: 5
+        like: 5,
+        coin: 200
     },
     {
         name: 'Bóng đá',
-        like: 10
+        like: 10,
+        coin: 300
     },
 ]
 
-var newSports = sports.forEach(sports => {
-    console.log(sports.name)
-})
+var newSports = sports.reduce((total,sports) => {
+    return total + sports.coin
+},100)
 
-console.log("---------");
+console.log(newSports);
 
-
-Array.prototype.myForEach = function(cb) {
+Array.prototype.myReduce = function(cb,initialValue) {
+    var total = initialValue;
     for(var i = 0; i<this.length;++i)
     {
-        cb(this[i],i)
+        total = cb(total,this[i])
     }
+    return total;
 }
 
-var newSports2= sports.myForEach(sports => {
-    console.log(sports.name)
-})
+var newSports2= sports.myReduce((total,sports) => {
+    return total + sports.coin
+},0)
+
+console.log(newSports2);
 
